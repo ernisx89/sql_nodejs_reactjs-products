@@ -1,8 +1,11 @@
-//ernestas 20200322
+//ernestas 20200323
 const express = require('express');
 const cors = require('cors');
 const mysql = require('mysql');
-
+//login
+const bodyParser = require('body-parser');
+const login = require('./routes/loginRoutes');
+//
 const app = express();
 
 //queries
@@ -15,7 +18,7 @@ const connection = mysql.createConnection({
   password: '1234',
   database: 'react_sql'
 });
-
+//
 connection.connect(err => {
   if(err) {
     return err;
@@ -44,6 +47,22 @@ app.get('/products', (req, res) => {
   });
 });
 
+
+//login
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+var router = express.Router();
+//route to handle user registration
+router.post('/register',login.register);
+router.post('/login',login.login)
+app.use('/', router);
+//
 app.listen(4000, () => {
   console.log('Products server listening on port 4000');
 });

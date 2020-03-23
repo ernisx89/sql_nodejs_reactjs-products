@@ -1,5 +1,9 @@
 ## Mysql workbench + Node JS + React JS 20200322
+main code src/App.js
+products-server/index.js
 
+github:
+https://github.com/ernisx89/sql_nodejs_reactjs-products
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

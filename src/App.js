@@ -1,36 +1,34 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+//import 'node-sass'
+
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
+import Products from './components/Products'
+
+import Navbar from './components/NavBar'
+import Landing from './components/Landing'
+import Login from './components/Login'
+import Register from './components/Register'
+import Profile from './components/Profile'
 
 class App extends Component {
-  state = {
-    products: []
-  }
-
-  componentDidMount() {
-    this.getProducts();
-  }
-
-  getProducts = _ => {
-    //gets from node js endpoint
-    fetch('http://localhost:4000/products')
-    .then(response => response.json())
-    .then(response => this.setState({ products: response.data}))
-    .catch(err => console.log(err));
-  }
-
-  renderProduct = ({ product_id, title }) => <div key={product_id}>
-   {product_id + 1}{'. '}{title}
-  </div>
-
   render() {
-    //console.log(this.state);
-    const { products } = this.state;
     return (
-      <div className="App">
-        {products.map(this.renderProduct)}
-      </div>
-    );
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <div className="container">
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile} />
+            <Route exact path="/products" component={Products} />
+          </div>
+        </div>
+      </Router>
+    )
   }
 }
 
-export default App;
+export default App

@@ -10,7 +10,6 @@ import Navbar from './components/NavBar'
 import Landing from './components/Landing'
 import Login from './components/Login'
 import Register from './components/Register'
-import Profile from './components/Profile'
 
 class App extends Component {
   render() {
@@ -22,7 +21,6 @@ class App extends Component {
           <div className="container">
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/profile" component={Profile} />
             <Route exact path="/products" component={Products} />
           </div>
         </div>

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { login } from './UserFunctions'
 
 class Login extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       email: '',
       password: '',
@@ -67,6 +67,7 @@ class Login extends Component {
               >
                 Sign in
               </button>
+              
             </form>
           </div>
         </div>

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 
 class Products extends Component {
-  state = {
-    products: []
+  constructor() {
+    super() 
+    this.state = {
+      products: []
+    }
   }
-
+  
   componentDidMount() {
     this.getProducts()
   }
@@ -22,11 +25,11 @@ class Products extends Component {
   </div>
 
   render() {
-    //console.log(this.state);
+    console.log(this.state);
     const { products } = this.state;
     return (
       <div className="App">
-        {products.map(this.renderProduct)}
+        {products.map(this.renderProduct.bind(this))}
       </div>
     )
   }

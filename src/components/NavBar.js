@@ -10,14 +10,14 @@ class Landing extends Component {
 
   render() {
     const loginRegLink = (
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">
+      <ul style={{listStyleType: "none"}}>
+        <li>
+          <Link to="/login">
             Login
           </Link>
         </li>
-        <li className="nav-item">
-          <Link to="/register" className="nav-link">
+        <li >
+          <Link to="/register" >
             Register
           </Link>
         </li>
@@ -25,14 +25,12 @@ class Landing extends Component {
     )
 
     const userLink = (
-      <ul className="navbar-nav">
-        <li className="nav-item">
-          <Link to="/profile" className="nav-link">
-            User
-          </Link>
+      <ul >
+        <li >
+         User Logged 
         </li>
-        <li className="nav-item">
-          <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+        <li >
+          <a href="" onClick={this.logOut.bind(this)}>
             Logout
           </a>
         </li>
@@ -40,25 +38,10 @@ class Landing extends Component {
     )
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarsExample10"
-          aria-controls="navbarsExample10"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div
-          className="collapse navbar-collapse justify-content-md-center"
-          id="navbarsExample10"
-        >
-          <ul className="navbar-nav">
-            <li className="nav-item">
+      <nav >
+        <div>
+          <ul >
+            <li >
               <Link to="/" className="nav-link">
                 Home
               </Link>

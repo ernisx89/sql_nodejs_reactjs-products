@@ -20,31 +20,46 @@ class Products extends Component {
     .then(response => this.setState({ products: response.data}))
     .catch(err => console.log(err))
   }
-
-  renderProduct = ({ product_id, title }) => {
-    return ( <div key={product_id}>
-      
-        <Link to={`/products/${product_id}`}>
-        {product_id + 1}{'. '}{title}
-        </Link>
-      
-    </div>
-    )
-  }
-   
+  
+  // renderProduct = ({ product_id, title }) => {
+  //   return ( <div key={product_id}>
+  //     <Link to={`/products/${product_id}`}>
+  //       {title}
+  //     </Link>
+  //   </div>
+  //   )
+  // }
 
   renderCategory = ({ category, title }) => 
     <div key={category}>
       {category}{'. '}{title}
     </div>
 
+  filter(e) {
+    this.setState({filter: e.target.value})
+  }
+
   render() {
-    console.log(this.state);
+    //console.log(this.state);
     const { products } = this.state;
+    let items = this.state.products
+    if(this.state.filter) {
+      items = items.filter((item) => {
+        return item.title == "product02"
+      }
+      )
+    }
     return (
       <div>
-        <div className="App">
-          {products.map(this.renderProduct.bind(this))}
+        <div>
+          <input type="text" onChange={this.filter.bind(this)} />
+          {items.map((item, i) =>
+          <Link to={`/products/${i}`}>
+           <p key={i}>{item.title}</p></Link>)
+          }
+        </div>
+        <div>
+          {/* {products.map(this.renderProduct.bind(this))} */}
         </div>
         <div>
           {products.map(this.renderCategory.bind(this))}

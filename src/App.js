@@ -47,9 +47,11 @@ class App extends Component {
             <Route exact path="/productsInfo" render={
               props => <ProductsInfo {...props} productsInfo={productsInfo}/>
             } />
-            <Route path="/productsInfo/:productId" render={
-              props => <ProductDetail {...props}/>} 
-            />
+            <ProductsInfo>
+              <Route path="/productsInfo/:productId" render={
+                ({ match }) => <ProductDetail {...productsInfo.find( product => product.id === match.params.id ) } />} 
+              />
+            </ProductsInfo>
            
           </div>
         </div>

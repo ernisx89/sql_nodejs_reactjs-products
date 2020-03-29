@@ -4,11 +4,8 @@ export default ({ match, product_id, title, category }) =>
 //console.log(match) 
 <Fragment>
   <div>
-   {product_id}
-
-   title
-
-   category
+    <div>Product Title: {title}</div>
+    <div>Product Category: {category}</div> 
   </div>
   
 </Fragment>

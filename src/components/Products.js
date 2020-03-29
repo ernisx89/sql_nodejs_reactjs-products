@@ -72,9 +72,6 @@ class Products extends Component {
       <div>
         <div>
           <div>
-            <Link to="/productsInfo">productsInfo</Link>
-          </div>
-          <div>
             <h2 className={headerClass}>
               <strong className="text-secondary">{totalProducts}</strong> Products 
             </h2>

@@ -49,6 +49,12 @@ class Landing extends Component {
           </ul>
           {localStorage.usertoken ? userLink : loginRegLink}
         </div>
+        <p>
+          <Link to="/productsInfo">Products Info</Link>
+        </p>
+        <p>
+          <Link to="/products">Products - Categories</Link>
+        </p>
       </nav>
     )
   }

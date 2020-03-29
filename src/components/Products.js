@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link }  from 'react-router-dom'
 import Pagination from './Pagination'
+//import ProductView from './ProductView'
 
 class Products extends Component {
   constructor(props) {
@@ -55,14 +56,14 @@ class Products extends Component {
 
   render() {
     //console.log(this.state);
-    const { products, currentProducts, currentPage, totalPages  } = this.state
+    let { products, currentProducts, currentPage, totalPages  } = this.state
     const totalProducts = products.length
     if (totalProducts === 0) return null
     const headerClass = ['text-dark py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim()
 
-    let items = this.state.products
+    //let currentProducts = this.state.products
     if(this.state.filter) {
-      items = items.filter((item) => {
+      currentProducts = currentProducts.filter((item) => {
         return item.title == "product02"
       }
       )
@@ -70,6 +71,9 @@ class Products extends Component {
     return (
       <div>
         <div>
+          <div>
+            <Link to="/productsInfo">productsInfo</Link>
+          </div>
           <div>
             <h2 className={headerClass}>
               <strong className="text-secondary">{totalProducts}</strong> Products 
@@ -86,12 +90,14 @@ class Products extends Component {
             { currentProducts.map(product => <p key={product.title}> {product.title} </p>) }
           <div>
         </div>
+          Filter: 
           <input type="text" onChange={this.filter.bind(this)} />
-          {items.map((item, i) =>
-          <Link to={`/products/${i}`}>
-           <p key={i}>{item.title}</p></Link>)
-          }
+          {/* {items.map((item, i) =>
+          
+           <p key={i}><Link to={{pathname: `/products/${i}`, state: { items: true } }}>{item.title}</Link></p>)
+          } */}
         </div>
+        
         <div>
           {/* {products.map(this.renderProduct.bind(this))} */}
         </div>
